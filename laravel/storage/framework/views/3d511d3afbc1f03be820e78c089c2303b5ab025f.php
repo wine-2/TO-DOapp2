@@ -22,22 +22,30 @@
       <main class="grow grid place-items-center">
           <div class="w-full mx-auto px-4 sm:px-6">
               <div class="py-[100px]">
-                  <form action="/tasks/{{ $task->id }}" method="post" class="mt-10">
-                      @csrf
-                      @method('PUT')
+                  <form action="/tasks/<?php echo e($task->id); ?>" method="post" class="mt-10">
+                      <?php echo csrf_field(); ?>
+                      <?php echo method_field('PUT'); ?>
   
                       <div class="flex flex-col items-center">
                           <label class="w-full max-w-3xl mx-auto">
                               <input
                                   class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-4 pl-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                                  type="text" name="task_name" value="{{ $task->name }}" />
-                              @error('task_name')
+                                  type="text" name="task_name" value="<?php echo e($task->name); ?>" />
+                              <?php $__errorArgs = ['task_name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                   <div class="mt-3">
                                       <p class="text-red-500">
-                                          {{ $message }}
+                                          <?php echo e($message); ?>
+
                                       </p>
                                   </div>
-                              @enderror
+                              <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                           </label>
   
                           <div class="mt-8 w-full flex items-center justify-center gap-10">
@@ -65,4 +73,4 @@
       </footer>
   </body>
   
-  </html>
+  </html><?php /**PATH C:\Users\CRE\Documents\TO-DOapp2\laravel\resources\views/tasks/edit.blade.php ENDPATH**/ ?>
