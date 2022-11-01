@@ -109,9 +109,15 @@
               </div>
           </div>
       </div>
+      <div class histry>
+          <a href="/history/">
+              完了済みタスク一覧
+          </a>
+
+      </div>
   @endif
-            </div>
-        </div>
+            
+        
     </main>
     <footer class="bg-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
